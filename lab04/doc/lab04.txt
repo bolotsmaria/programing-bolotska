@@ -1,0 +1,34 @@
+Лабораторна робота №4 
+Завдання 24 (Дано дійсне число x. Для функції y(x), графік якої поданий на рисунку нижче, обчислити значення y.)
+
+Болотська Марія Сергіівна 922 B
+
+1)Робимо директорію:
+
+mkdir lab04
+
+mkdir lab04/doc 
+
+mkdir lab04/src
+
+cp ~/programing-bolotska/lab02/README.md ~/programing-bolotska/lab04 (копіюємо README.md)
+
+cp ~/programing-bolotska/lab02/Makefile ~/programing-bolotska/lab04 (копіюємо Makefile)
+
+touch lab04.txt - створюємо док файл
+
+touch main.c - створюємо сішний файл 
+ 
+Результат:lab04
+    ├── doc
+    │   └── lab04.txt
+    ├── Makefile
+    ├── README.md
+    └── src
+        └── main.c
+
+2) Основна частина:
+
+3) Компілюємо через команду - clang main.c -g -o main.bin
+
+4) Запускаємо через дебагер - lldb main.bin
