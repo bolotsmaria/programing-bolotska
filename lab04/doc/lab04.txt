@@ -28,7 +28,79 @@ touch main.c - створюємо сішний файл
         └── main.c
 
 2) Основна частина:
+#include <stdio.h>
+#include <math.h>
 
+ 
+int taskFunc(int x) {				// задаємо функцію та змінну (х)
+
+  if ( x < 1) {					// якщо x<1
+    return x + 1;				// повертає х+1
+  }
+
+  return x - 1;
+}
+
+int main(void) {				// використовуємо void як пустий вказівник
+  for (int x = -3; x < 4; x++) {		// цикл для змінної х від -3 до 4 з першим кроком 
+    printf("x: %d\ty: %d\n", x, taskFunc(x));	// команда для виведення результатів 
+  }
+  return 0;
+}
 3) Компілюємо через команду - clang main.c -g -o main.bin
 
 4) Запускаємо через дебагер - lldb main.bin
+
+(lldb) target create "main.bin"
+Current executable set to '/home/maria/programing-bolotska/lab04/src/main.bin' (x86_64).
+(lldb) l 1
+   1   #include <stdio.h>
+   2   #include <math.h>
+   3   
+   4   
+   5   int taskFunc(int x) { // задаємо функцію та змінну (х)
+   6   
+   7    if ( x < 1) { // якщо x<1
+   8      return x + 1; // повертає х+1
+   9    }
+   10   
+   11    return x - 1;
+   12   }
+   13   
+   14   int main(void) { // використовуємо void як пустий вказівник
+   15    for (int x = -3; x < 4; x++) { // цикл для змінної х від -3 до 4 з першим кроком 
+   16      printf("x: %d\ty: %d\n", x, taskFunc(x)); // команда для виведення результатів 
+   17    }
+   18    return 0;
+   19   }
+(lldb) b 18 - ставимо брекпоінт
+Breakpoint 1: where = main.bin`main + 79 at main.c:18:3, address = 0x00000000000011bf
+(lldb) r
+Process 5541 launched: '/home/maria/programing-bolotska/lab04/src/main.bin' (x86_64) 
+маємо результат:
+x: -3 y: -2
+x: -2 y: -1
+x: -1 y: 0
+x: 0 y: 1
+x: 1 y: 0
+x: 2 y: 1
+x: 3 y: 2
+Process 5541 stopped 
+* thread #1, name = 'main.bin', stop reason = breakpoint 1.1
+    frame #0: 0x00005555555551bf main.bin`main at main.c:18:3
+   15    for (int x = -3; x < 4; x++) { // цикл для змінної х від -3 до 4 з першим кроком 
+   16      printf("x: %d\ty: %d\n", x, taskFunc(x)); // команда для виведення результатів 
+   17    }
+-> 18    return 0;
+   19   }
+(lldb)
+5) Зберігаємо проект:
+
+git add lab04/
+
+git commit -am "programing-bolotska"
+
+git pull --rebase origin main
+
+git push -u origin main
+=======
