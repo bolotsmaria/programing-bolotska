@@ -21,7 +21,7 @@ touch main.c - створюємо сішний файл
  
 Результат:lab04
     ├── doc
-    │   └── lab04.txt
+    │   └── lab05.txt
     ├── Makefile
     ├── README.md
     └── src
@@ -160,7 +160,7 @@ Process 5255 launched: '/home/maria/programing-bolotska/lab05/src/main.bin' (x86
 
 5) Зберігаємо проект:
 
-git add lab04/
+git add lab05/
 
 git commit -am "programing-bolotska"
 
