@@ -1,0 +1,91 @@
+Лабораторна робота №5
+Завдання 23 ((**) Визначити, чи є задане ціле число простим.)
+
+Болотська Марія Сергіівна 922 B
+
+1)Робимо директорію:
+
+mkdir lab05
+
+mkdir lab05/doc 
+
+mkdir lab05/src
+
+cp ~/programing-bolotska/lab02/README.md ~/programing-bolotska/lab05 (копіюємо README.md)
+
+cp ~/programing-bolotska/lab02/Makefile ~/programing-bolotska/lab05 (копіюємо Makefile)
+
+touch lab05.txt - створюємо док файл
+
+touch main.c - створюємо сішний файл 
+ 
+Результат:lab04
+    ├── doc
+    │   └── lab04.txt
+    ├── Makefile
+    ├── README.md
+    └── src
+        └── main.c
+
+2) Основна частина:
+
+
+
+3) Компілюємо через команду - clang main.c -g -o main.bin
+
+4) Запускаємо через дебагер - lldb main.bin
+
+lldb main.bin
+
+(lldb) target create "main.bin"
+(lldb) l 1
+   1   #include <stdio.h>
+   2   #include<stdbool.h> // у stdbool міститься визначення логічних констант true та false
+   3    bool isPrime(int x) // перевіряє чи х просте число
+   4      {
+   5      if (x>1) // якщо n > 1
+   6      {
+   7          for (int i = 2; i < x; i++) // у циклі перебираємо числа від 2 до n - 1
+   8          if (x % i == 0) // якщо n ділиться без остачі на i - повертаємо false (число не просте)
+   9          return false;
+   10        
+(lldb) l
+   11          return true; // якщо дійшло до даного оператора повертаємо true (число просте)
+   12      }
+   13      else{ // інакше повертаємо false
+   14      return false;
+   15      }
+   16  
+   17   }
+   18   int main()
+   19   {
+   20       int x;    // задаємо змінну х
+(lldb) l
+   21       printf("введіть число:");              // команда для виведення запиту числа
+   22       scanf("%d",&x);                        // команда для введення значення х
+   23       printf("значення:%d\n",isPrime(x));    // команда для виведення результату значення
+   24   }
+   25  
+   26  
+(lldb) b 14
+Breakpoint 1: where = main.bin`isPrime + 89 at main.c:14:5, address = 0x00000000000011a9
+(lldb) r
+Process 5211 launched: '/home/maria/programing-bolotska/lab05/src/main.bin' (x86_64)
+введіть число:21
+значення:0
+Process 5211 exited with status = 0 (0x00000000)
+(lldb) r
+Process 5255 launched: '/home/maria/programing-bolotska/lab05/src/main.bin' (x86_64)
+введіть число:13
+значення:1
+
+5) Зберігаємо проект:
+
+git add lab04/
+
+git commit -am "programing-bolotska"
+
+git pull --rebase origin main
+
+git push -u origin main
+=======
