@@ -1,0 +1,122 @@
+Лабораторна робота №5
+Завдання 23 ((**) Визначити, чи є задане ціле число простим.)
+
+Болотська Марія Сергіівна 922 B
+
+1)Робимо директорію:
+
+mkdir lab06
+
+mkdir lab06/doc 
+
+mkdir lab06/src
+
+cp ~/programing-bolotska/lab02/README.md ~/programing-bolotska/lab06 (копіюємо README.md)
+
+cp ~/programing-bolotska/lab02/Makefile ~/programing-bolotska/lab06 (копіюємо Makefile)
+
+touch lab06.txt - створюємо док файл
+
+touch main.c - створюємо сішний файл 
+ 
+Результат:lab04
+    ├── doc
+    │   └── lab06.txt
+    ├── Makefile
+    ├── README.md
+    └── src
+        └── main.c
+
+2) Основна частина:
+#include <stdio.h>
+#include <string.h>  //Бібліотека, що визначає один тип змінної і різні функції для роботи з масивами символів
+
+int main()
+{
+    int total_words = 0; // Визначаємо лічильник total_words
+  char str[] = "The quick brown  fox jumps over   the lazy  dog"; // Визначаємо масив символів із цим значенням
+
+  int init_size = strlen(str);  // Визначаємо розмір масиву з довжиною масиву str
+  
+  char delim[] = " ";  // Визначаємо яким символом будуть заповнені символами 
+
+  char *ptr = strtok(str, delim);// Буферна змінна char ptr визначається як розділення масиву str на роздільник
+
+  while(ptr != NULL)   //Показник перебирає елементи поки не досягне 0
+
+  {
+    printf("'%s'\n", ptr); // Виводимо слово
+        total_words++; // Збільшуємо лічильник total_words
+  ptr = strtok(NULL, delim);    // Продовжуємо токенізацію існуючого рядка і повертаємо 0    
+  }
+    printf("\n%d words.", total_words);// Виводимо рузультат
+  return 0;
+}
+
+3) Компілюємо через команду - clang main.c -g -o main.bin
+
+4) Запускаємо через дебагер - lldb main.bin
+
+lldb main.bin
+
+(lldb) target create "main.bin"
+(lldb) l 1
+   1   #include <stdio.h>
+   2   #include <string.h> //бібліотека яка визначає один тип змінної і різні функції для роботи з масивами символ
+   3   int main()
+   4   {
+   5   int total_words = 0; //визначаємо личільник total_words
+   6   char str[] = "The quick brown  fox jumps over  the lazy dog"; //визначаємо масив символів із цим значенням
+   7         int init_size = strlen(str); //визначаємо розмір масиву з довжиною масиву str
+   8   char delim[] = " "; //визначаємо яким символом будуть заповнені символами
+   9   char *ptr = strtok(str, delim); //буферна змінна char ptr визначається як розділення масиву str на роздільник  
+   10   while(ptr != NULL) //показник перебирає елементи поки не досягне 0
+(lldb) l
+   11   {
+   12   printf("'%s'\n", ptr); //виводмо слово
+   13   total_words++; //збільшуємо лічильник total_words
+   14   ptr = strtok(NULL,delim); //продовжуємо токенізацію існуючого рядка і повертаємо 0
+   15   }
+   16   printf("\n%d words.", total_words); //виводимо результат
+   17   return 0;
+   18   }
+   19  
+   20  
+(lldb) b 17
+Breakpoint 1: where = main.bin`main + 160 at main.c:17:1, address = 0x0000000000001210
+(lldb) r
+Process 4306 launched: '/home/maria/programing-bolotska/lab06/src/main.bin' (x86_64)
+'The'
+'quick'
+'brown'
+'fox'
+'jumps'
+'over'
+'the'
+'lazy'
+'dog'
+
+Process 4306 stopped
+* thread #1, name = 'main.bin', stop reason = breakpoint 1.1
+    frame #0: 0x0000555555555210 main.bin`main at main.c:17:1
+   14   ptr = strtok(NULL,delim); //продовжуємо токенізацію існуючого рядка і повертаємо 0
+   15   }
+   16   printf("\n%d words.", total_words); //виводимо результат
+-> 17   return 0;
+   18   }
+   19  
+   20  
+(lldb) p total_words
+(int) $0 = 9
+(lldb)
+
+5) Зберігаємо проект:
+
+git add lab06/
+
+git commit -am "programing-bolotska"
+
+git pull --rebase origin main
+
+git push -u origin main
+=======
