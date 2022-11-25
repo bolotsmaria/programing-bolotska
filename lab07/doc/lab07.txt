@@ -1,0 +1,183 @@
+Лабораторна робота №7
+
+Болотська Марія Сергіівна 922 B
+
+1)Робимо директорію:
+
+mkdir lab07
+
+mkdir lab07/doc 
+
+mkdir lab07/src
+
+cp ~/programing-bolotska/lab02/README.md ~/programing-bolotska/lab07 (копіюємо README.md)
+
+cp ~/programing-bolotska/lab02/Makefile ~/programing-bolotska/lab07 (копіюємо Makefile)
+
+touch lab06.txt - створюємо док файл
+
+touch main.c - створюємо сішний файл 
+ 
+Результат:lab07
+    ├── doc
+    │   └── lab07.txt
+    ├── Makefile
+    ├── README.md
+    └── src
+        └── main.c
+
+2) Основна частина:
+#include <stdio.h>
+#include <math.h> // бібліотека, яка включає набір математичних функцій
+
+int true=0, false=1;  
+int isPrime(int x)  // функція, яка перевіряє чи х просте число 
+{
+  if (x>1)  // якщо n > 1
+  {
+    for (int i = 2; i < x; i++)       // у циклі перебираємо числа від 2 до n - 1
+        if (x % i == 0)    // якщо n ділиться без остачі на i - повертаємо false (число не просте)
+       return false;
+       
+        return true;             // якщо дійшло до даного оператора повертаємо true (число просте)
+  }
+  else{                               
+    return false;           // інакше повертаємо false
+    }
+}
+ int main()
+ {
+     int x;            // задаємо змінну х
+     printf("введіть число:");              //  виведення запиту числа
+     scanf("%d",&x);                        //  введення значення х
+     printf("значення:%d\n",isPrime(x));    // виведення результату значення
+ }
+
+#include <stdio.h>
+#include <string.h>
+int a(int total_words)
+{
+  total_words = 0; // Визначаємо лічильник total_words
+  char str[] = "The quick brown  fox jumps over   the lazy  dog"; // Визначаємо масив символів із цим значенням
+
+  int init_size = strlen(str);  // Визначаємо розмір масиву з довжиною масиву str
+  
+  char delim[] = " ";  // Визначаємо яким символом будуть заповнені символами 
+
+  char *ptr = strtok(str, delim);// Буферна змінна char ptr визначається як розділення масиву str на роздільник
+
+  while(ptr != NULL)   //Показник перебирає елементи поки не досягне 0
+
+  {
+    printf("'%s'\n", ptr); // Виводимо слово
+        total_words++; // Збільшуємо лічильник total_words
+  ptr = strtok(NULL, delim);    // Продовжуємо токенізацію існуючого рядка і повертаємо 0    
+  }
+    printf("\n%d words.", total_words);// Виводимо рузультат
+  return 0;
+
+
+}
+int main()
+{
+    int total_words;
+    int c;           //задаэмо змінну
+    c = a(total_words); 
+  return 0;
+}
+
+3) Компілюємо через команду - clang main.c -g -o main.bin
+
+4) Запускаємо через дебагер - lldb main.bin
+
+lldb main.bin
+(lldb) l 1
+   1   #include <stdio.h>
+   2   #include <math.h> // бібліотека, яка включає набір математичних функцій
+   3  
+   4   int true=0, false=1;  
+   5   int isPrime(int x)  // функція, яка перевіряє чи х просте число
+   6   {
+   7    if (x>1)  // якщо n > 1
+   8    {
+   9      for (int i = 2; i < x; i++)       // у циклі перебираємо числа від 2 до n - 1
+   10          if (x % i == 0)    // якщо n ділиться без остачі на i - повертаємо false (число не просте)
+(lldb) l
+   11         return false;
+   12        
+   13          return true;             // якщо дійшло до даного оператора повертаємо true (число просте)
+   14    }
+   15    else{                              
+   16      return false;           // інакше повертаємо false
+   17      }
+   18   }
+   19   int main()
+   20   {
+(lldb) l
+   21       int x;            // задаємо змінну х
+   22       printf("введіть число:");              //  виведення запиту числа
+   23       scanf("%d",&x);                        //  введення значення х
+   24       printf("значення:%d\n",isPrime(x));    // виведення результату значення
+   25   }
+   26  
+   27  
+   28  
+   29  
+   30  
+(lldb) l
+   31  
+   32  
+   33   //#include <stdio.h>
+   34   //#include <string.h>
+   35   //int a(int total_words)
+   36   //{
+   37    //total_words = 0; // Визначаємо лічильник total_words
+   38    //char str[] = "The quick brown  fox jumps over   the lazy  dog"; // Визначаємо масив символів із цим значенням
+   39  
+   40    //int init_size = strlen(str);  // Визначаємо розмір масиву з довжиною масиву str
+(lldb) l
+   41  
+   42    //char delim[] = " ";  // Визначаємо яким символом будуть заповнені символами
+   43  
+   44    //char *ptr = strtok(str, delim);// Буферна змінна char ptr визначається як розділення масиву str на роздільник
+   45  
+   46    //while(ptr != NULL)   //Показник перебирає елементи поки не досягне 0
+   47  
+   48    //{
+   49      //printf("'%s'\n", ptr); // Виводимо слово
+   50         // total_words++; // Збільшуємо лічильник total_words
+(lldb) l
+   51    //ptr = strtok(NULL, delim);    // Продовжуємо токенізацію існуючого рядка і повертаємо 0
+   52    //}
+   53      //printf("\n%d words.", total_words);// Виводимо рузультат
+   54    //return 0;
+   55  
+   56  
+   57   //}
+   58   //int main()
+   59   //{
+   60      //int total_words;
+(lldb) l
+   61      //int c;
+   62      //c = a(total_words);
+   63    //return 0;
+   64   //}
+(lldb) r
+Process 3625 launched: '/home/maria/programing-bolotska/lab07/src/main.bin' (x86_64)
+введіть число:12
+значення:1
+
+5) Зберігаємо проект:
+
+git add lab07/
+
+git commit -am "programing-bolotska"
+
+git pull --rebase origin main
+
+git push -u origin main
+=======
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
