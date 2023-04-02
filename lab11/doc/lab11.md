@@ -12,19 +12,19 @@
 
 ### Призначення та опис структури розроблених методів констант та змінних функції 
 
-`int maxSubArray(int arr[], int n, int *start, int *end) - Объявление функции maxSubArray с параметрами: массив arr, длина n, указатели start и end.
+`int maxSubArray(int arr[], int n, int *start, int *end) - Объявление функции maxSubArray с параметрами: массив arr, длина n, указатели start и end.`
 
-`int max_so_far = 0, max_ending_here = 0,  - Инициализация переменных
+`int max_so_far = 0, max_ending_here = 0,  - Инициализация переменных`
 
-`s = 0 - Начальный индекс (s).
+`s = 0 - Начальный индекс (s).`
 
-`int arr[n] - масив arr розміру n
+`int arr[n] - масив arr розміру n`
 
-`int main() - Точка входу в програму
+`int main() - Точка входу в програму`
 
-`int start = 0, end = 0;
+`int start = 0, end = 0;`
 
-`int max_sum = maxSubArray(arr, n, &start, &end) - Оголошуємо змінні start, end, max.  
+`int max_sum = maxSubArray(arr, n, &start, &end) - Оголошуємо змінні start, end, max.`  
  	
 **Опис функцій**
   `int main()` - Точка входу в програму. Повертає код помилки (0)
