@@ -8,26 +8,26 @@ START_TEST(test_pascal_triangle)
 {
     int rows = 5;
 
-    // Expected output for 5 rows of Pascal's triangle
+    
     char expected_output[] = "    1 \n   1 1 \n  1 2 1 \n 1 3 3 1 \n1 4 6 4 1 \n";
 
-    // Redirect stdout to a buffer
+    
     freopen("output.txt", "w", stdout);
 
-    // Call the function
+    
     pascal_triangle_iterative(rows);
 
-    // Close stdout
+    
     fclose(stdout);
 
-    // Open the file and read the output
+    
     FILE *fp;
     char output[100];
     fp = fopen("output.txt", "r");
     fgets(output, 100, fp);
     fclose(fp);
 
-    // Compare the output to the expected output
+    
     ck_assert_str_eq(output, expected_output);
 }
 END_TEST
