@@ -11,7 +11,7 @@ int main() {	// Оголошення головної функції main().
 
   return 0;
 }
-*/
+/*
 Рекурсивний спосіб
 #include "lib.h"
 #include <stdio.h>
@@ -30,4 +30,4 @@ int main() {
 
   return 0;
 }
-/*
+
