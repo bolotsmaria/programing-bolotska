@@ -18,7 +18,7 @@ void print_pascal_triangle(int rows) {	//Оголошення функції pri
   }
 }
 
-*/
+/*
 Рекурсивний спосіб
 #include "lib.h"
 #include <stdio.h>
@@ -52,4 +52,3 @@ void print_pascal_triangle_helper(int rows, int current_row) {
 void print_pascal_triangle(int rows) {
   print_pascal_triangle_helper(rows, 1);
 }
-/*
