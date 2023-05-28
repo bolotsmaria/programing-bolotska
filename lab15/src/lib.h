@@ -16,43 +16,23 @@
 #ifndef LIB_H
 #define LIB_H
 
-#include <string.h>
+// Структура смичка
+typedef struct {
+    int weight;       // Вага смичка в грамах
+    char material[20]; // Матеріал деревка смичка
+} Bow;
 
-/ Структура для видавництва
-struct Publisher {
-    char name[100];
-    int version;
-};
-
-// Структура для базового класу "Книга"
-struct Book {
-    int has_electronic_version; // 1, якщо є електронна версія, 0 якщо немає
-    char title[100];
-    int num_pages;
-    struct Publisher* publisher_ptr;
-    enum CoverType {
-        HARD,
-        SOFT
-    } cover;
-};
-
-// Структура для художніх книг, що успадковує поля базового класу "Книга"
-struct FictionBook {
-    struct Book book;
-    enum Direction {
-        RENAISSANCE,
-        MODERN,
-        POSTMODERN
-    } direction;
-    enum Genre {
-        NOVEL,
-        DETECTIVE,
-        NOVELLA,
-        STORY
-    } genre;
-};
+// Структура смичкового інструменту
+typedef struct {
+    int isAcoustic;   // Чи акустичний інструмент (1 - так, 0 - ні)
+    char brand[20];   // Фірма/Майстер
+    int year;         // Рік створення
+    Bow bow;          // Смичок
+    int size;         // Розмір
+} StringedInstrument;
 
 #endif
+
 */
 
 /* Спадкоємець 2 - Контрабас. Додаткові поля:
