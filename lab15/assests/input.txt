@@ -1,0 +1,1 @@
+/home/bogdan/programing-melnik/lab15/dist/main.bin
