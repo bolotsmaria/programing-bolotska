@@ -83,7 +83,7 @@
 
 ```
 (lldb) r
-Process 3193 launched: '/home/bogdan/test/main.bin' (x86_64)
+Process 3193 launched: '/home/bolotsmaria/test/main.bin' (x86_64)
 Перший інструмент:
 Чи акустичний: Так
 Фірма/Майстер: Stentor
